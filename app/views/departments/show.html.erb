@@ -1,0 +1,86 @@
+<% provide(:title, ' Sub Departments') %>
+<html>
+    
+    <head>
+         <link rel="stylesheet" href="assets/stylesheets/sub_departments/show.scss">
+    </head>
+    
+    <body>
+        <pid="notice"><%= notice %></p>
+
+<% if !@department.nil? %>
+    
+        <div class="container-fluid">
+            
+        <div class="row" id="onlyRow">
+            <div class="col-md-3" id="sideBar">
+                <div class="row">
+                  <section class="brands">
+                       <h2> Brands </h2>
+                    <% @department.each do |sub_id|%>
+                    <a href="https://ror-harrisneo.c9users.io/sub_departments/<%=sub_id%>">
+                    <div class="yoyo">
+                        <span class="text"><%=SubDepartment.find_by_id(sub_id).name do%></span>
+                        <span class="line -right"></span>
+                        <span class="line -top"></span>
+                        <span class="line -left"></span>
+                        <span class="line -bottom"></span> </a><%end%>
+                    </div>    
+                   
+                    <%end%>
+                  </section>
+
+            </div>
+            </div>
+            <div class="col-md-9">
+                <%= will_paginate %>
+                <div class="wrapper">
+                	<div class="desc">
+                	    <h1><%= @department.name%></h1>
+                	</div>
+                
+                	<div class="content">
+                		<!-- content here -->
+                		<div class="product-grid product-grid--flexbox">
+                			<div class="product-grid__wrapper">
+                				<!-- Product list start here -->
+                                <% @departments.each do |p|%>
+                				<!-- Single product -->
+                				<div class="product-grid__product-wrapper">
+                					<div class="product-grid__product">
+                						<div class="product-grid__img-wrapper">			
+                							<img src="<%=p.image%>" alt="Img" class="product-grid__img" />
+                						</div>
+                						<span class="product-grid__title"><%=p.name%></span>
+                						<span class="product-grid__price">Rs. <%=p.price.to_i%></span>
+                						<div class="product-grid__extend-wrapper">
+                							<div class="product-grid__extend">
+                								<p class="product-grid__description">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Perferendis velit itaque odit.</p>
+                								<a href="https://www.daraz.pk/smartphones/samsung/?page=2"><span class="product-grid__btn product-grid__add-to-cart"><i class="fa fa-cart-arrow-down"></i> Add to cart</span> </a>				
+                								<span class="product-grid__btn product-grid__view"><i class="fa fa-eye"></i> View more</span>
+                								<%= button_to 'Add to Cart', line_items_path(product_id: p.id), class: "btn btn-success" %>
+                								
+                							</div>
+                						</div>
+                					</div>
+                				</div>
+                				<%end%>
+                				
+                			</div>		
+                		</div>
+                	</div> 	
+                	<%= will_paginate %>
+                </div>
+            </div>
+        </div>
+</div>
+
+
+        
+<% elsif @department.nil?%>
+    <h1><%=@id%></h1>
+    <h1>Department Doesn't Exist</h1>
+<%end%>
+</body>
+        
+</html>

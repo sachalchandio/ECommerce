@@ -1,0 +1,77 @@
+<% provide(:title, @subDepartment.name) %>
+
+<head>
+    <link rel="stylesheet" href="assets/stylesheets/products/index.scss">
+</head>
+
+<body>
+<pid="notice"><%= notice %></p>
+
+<% if !@subDepartment.nil? %>
+        <div class="container-fluid">
+            <div class="row" id="onlyRow">
+                <div class="col-md-3" id="sideBar">
+                    <div class="row">
+                      <section class="brands">
+                           <h2> Brands </h2>
+                    <%@subDepartment.brands.each do |brand|%>
+                        <div class="yoyo">
+                            <%= link_to join_on_d_sd_b_path(:brand_id => brand.id ) do%>
+                            <span class="text"><%=brand.name%></span>
+                            <span class="line -right"></span>
+                            <span class="line -top"></span>
+                            <span class="line -left"></span>
+                            <span class="line -bottom"></span>
+                        </div>     <%end%>
+                       <%end%>
+                      </section>
+                </div>
+            </div>
+            <div class="col-md-9">
+                 <h1><%= @subDepartment.name %></h1>
+                <div class="wrapper">
+                	<div class="content">
+                	    <%= will_paginate %>
+                		<!-- content here -->
+                		<div class="product-grid product-grid--flexbox">
+                			<div class="product-grid__wrapper">
+                				<!-- Product list start here -->
+                                <% @subDepartment.products.each do |p|%>
+                				<!-- Single product -->
+                				<div class="product-grid__product-wrapper">
+                					<div class="product-grid__product">
+                						<div class="product-grid__img-wrapper">			
+                							<a href="https://ror-harrisneo.c9users.io/products/<%=p.id%>">	<img src="<%=p.image%>" alt="Img" class="product-grid__img" /> </a>
+                						</div>
+                						<span class="product-grid__title"><%=p.name%></span>
+                						<span class="product-grid__price">Rs. <%=p.price.to_i%></span>
+                						<div class="product-grid__extend-wrapper">
+                							<div class="product-grid__extend">
+                								<p class="product-grid__description">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Perferendis velit itaque odit.</p>
+                								
+                							<a href="https://ror-harrisneo.c9users.io/products/<%=p.id%>">	<span class="product-grid__btn product-grid__view"><i class="fa fa-eye"></i> View more</span></a>
+                							<span><%= button_to 'Add to Cart', line_items_path(product_id: p.id), class: "btn btn-success" %></span>
+                							</div>
+                						</div>
+                					</div>
+                				</div>
+                				<%end%>
+                			</div>	
+                		</div>
+                	</div> 
+                </div>
+            </div>
+        </div>
+</div>
+   
+       	
+
+        
+<% elsif @subDepartment.nil?%>
+    <h1><%= @id%></h1>
+    <h1>SubDepartment Doesn't Exist</h1>
+<% else%>    
+<%end%>
+</body>
+
+        

@@ -1,0 +1,20 @@
+
+
+<div class = 'brandNewForm'>
+
+
+  <%= simple_form_for @brand do |f| %>
+  
+    <%= f.input :name %>
+  
+    <%#= f.association :sub_departments, :as => :check_boxes %>
+    
+    <%= f.collection_check_boxes :sub_department_ids, SubDepartment.all, :id, :name %>
+    
+    
+   <%= f.button :submit %>
+   
+  <% end %>
+
+
+</div>

@@ -1,0 +1,60 @@
+<%= form_with(model: order, local: true) do |form| %>
+  <% if order.errors.any? %>
+  <div id="error_explanation">
+    <div class="alert alert-danger">
+      The form contains <%= pluralize(order.errors.count, "error") %>.
+    </div>
+    <ul>
+    <% order.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+    </ul>
+  </div>
+<% end %>
+  
+
+  <div class="field">
+    <%= form.label :first_name %><br />
+    <%= form.text_field :first_name %>
+  </div>
+  <div>
+    <%= form.label :last_name %><br />
+    <%= form.text_field :last_name %>
+  </div>
+
+  <div class="field">
+    <%= form.label :address %>
+    <%= form.text_area :address, id: :order_address , rows: 3 , cols: 40 %>
+  </div>
+
+  <div class="field">
+    <%= form.label :email %>
+    <%= form.text_field :email, id: :order_email,size: 40 %>
+  </div>
+
+  <div class="field">
+    <%= form.label :card_type %><br />
+   <%= form.select :card_type, [["Visa", "visa"], ["MasterCard", "master"], ["Discover", "discover"], ["American Express", "american_express"]] %>
+  </div>
+
+   <div class="field">
+    <%= form.label :amount%>
+    <%=form.text_field :amount ,value: @order_amount  %>
+  </div>
+  <div class = "field">
+    <%=form.label :card_number%>
+    <%= form.text_field :card_number %>
+   
+  </div>
+  
+
+    <p>
+    <%= form.label :card_expires_on %><br />
+    <%= form.date_select :card_expires_on, :discard_day => true, :start_year => Date.today.year, :end_year => (Date.today.year+10), :add_month_numbers => true %>
+    </p>
+
+  
+  <div class="actions">
+    <%= form.submit "Place Order" %>
+  </div>
+<% end %>

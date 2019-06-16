@@ -1,0 +1,31 @@
+  
+<head>  
+  <link rel="stylesheet" href="/assets/stylesheets/shared/slider.scss"> 
+</head>
+<body>
+  <div id="myCarousel" class="carousel slide" data-ride="carousel">
+    <!-- Indicators -->
+    <ol class="carousel-indicators">
+      <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+      <li data-target="#myCarousel" data-slide-to="1"></li>
+      <li data-target="#myCarousel" data-slide-to="2"></li>
+    </ol>
+
+    <!-- Wrapper for slides -->
+    <div class="carousel-inner">
+      <div class="item active"> <%= image_tag "Galaxy_S9.jpg",alt: "" , :class => "style_image"%> </div>
+      <div class="item"> <%= image_tag "Galaxy_S9.1.jpg",alt: ""%>  </div>
+      <div class="item">  <%= image_tag "Mate10.jpeg",alt: ""%>   </div>
+    </div>
+    
+    <!-- Left and right controls -->
+    <a class="left carousel-control" href="#myCarousel" data-slide="prev">
+      <span class="glyphicon glyphicon-chevron-left"></span>
+      <span class="sr-only">Previous</span>
+    </a>
+    <a class="right carousel-control" href="#myCarousel" data-slide="next" id="rightArrow">
+      <span class="glyphicon glyphicon-chevron-right"></span>
+      <span class="sr-only">Next</span>
+    </a>
+  </div>
+</body>

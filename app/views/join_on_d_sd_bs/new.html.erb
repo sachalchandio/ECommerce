@@ -1,0 +1,15 @@
+<h1>New Join On D Sd B</h1>
+
+
+
+<%= simple_form_for(@join_on_d_sd_b) do |f| %>
+
+    <%= f.label :brand %>
+    <%= f.collection_select :brand_id, Brand.order(:name), :name, :name %>
+    <%= f.association :sub_department, :collection => @subdept, :as => :check_boxes %>
+    <%= f.button :submit %>
+  
+<% end %>
+
+
+<%= link_to 'Back', join_on_d_sd_bs_path %>

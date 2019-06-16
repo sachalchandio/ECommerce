@@ -1,0 +1,116 @@
+<head>
+      <link rel="stylesheet" href="assets/stylesheets/shared/temporaryDelete.scss">
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.3/jquery.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick.min.js"></script>
+      <link href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick.min.css" rel="stylesheet" />
+      <link href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick-theme.min.css" rel="stylesheet" />
+      
+      <link rel="stylesheet" href="/path/to/bootstrap.min.css">
+      <script src="/path/to/jquery.min.js"></script>
+      <script src="/path/to/bootstrap.min.js"></script>
+      
+          <link rel="stylesheet" type="text/css" href="slimmenu.css">
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+
+<style>
+
+ul ul{display:none;} /* hide the sub-list */
+
+li:hover ul{display:block;}
+
+.dropdownDepartments{
+    margin-left : 20px;
+     display: flex;
+}
+
+.dropdown-submenu {
+    position: relative;
+}
+
+.dropdown-submenu .dropdown-menu {
+    top: 0;
+    left: 100%;
+    margin-top: -1px;
+}
+
+
+</style>
+</head>
+
+<body>
+  <header class="navbar navbar-fixed-top ">
+     <div class="container">
+         <div class="row">
+                <div class="col-md-3">
+                  <%= link_to "Reezay ", root_path, id: "logo" %>
+                  <ul class="nav navbar-nav">
+                    <div class="dropdownDepartments">
+                        <div class="container">
+                          <div class="dropdown">
+                            <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown">Departments
+                            <span class="caret"></span></button>
+                            <% iAmTooFuckingShit.each do |department| %>
+                            <ul class="dropdown-menu">
+                                <li><a tabindex="-1" href="#">2nd level dropdown</a></li>
+                              <li class="dropdown-submenu">
+                                <a class="test" href="#"><%=department.name%><<span class="caret"></span></a>
+                                <% get_all_subdepartments_by_name(department.name).each do |subDept| %>		
+                                <ul class="dropdown-menu">
+                                    <li><a tabindex="-1" href="#">3rd level dropdown</a></li>
+                                  <li class="dropdown-submenu">
+                                    <a class="test" href="#"><%=subDept%> <span class="caret"></span></a>
+                                    <%end%>
+                                    </ul>
+                                  </li> 
+                                <%end%></ul> 
+                              </li> 
+                            </ul>
+                          </div>
+                        </div> 
+                    </div>
+                 </div>
+                 
+                 <div class="col-md-6">
+                                 
+                         <table> <tr>
+                              <%= form_tag(root_path, method: :get) do %> 
+                         <div class="col-xs-4">
+                             <td><%= text_field_tag :search, nil, placeholder: 'Search product', class: 'form-control', size: 40  %></td>
+                         </div>  
+                             <td><%= submit_tag "Search", class: "btn btn-primary", id: 'search_button' %></td>
+                                  <%end%>
+                                 </tr> 
+                        </table>
+                </div>
+                
+                <div class="col-md-3">
+                    <nav>
+                        <ul class="nav navbar-nav navbar-right">
+                        <li><%= link_to "Home",    root_path%></li>
+                        <% if logged_in? %>
+                          <li class="dropdown">
+                              <a href="#" class="dropdown-toggle" data-toggle="dropdown"> Account <b class="caret"></b> </a>
+                                  <ul class="dropdown-menu">
+                                    <li><%= link_to "Profile", current_user %></li>
+                                    <li><%= link_to "Settings", '#' %></li>
+                                    <li class="divider"></li>
+                                    <li> <%= link_to "Log out", logout_path, method: :delete %></li>
+                                   </ul>
+                          </li>
+                        <% else %>
+                            <li><%= link_to "Log in", login_path %></li>
+                            <li><%= link_to "Sign up", signup_path %></li>
+                        <% end %>
+                        <li><a><span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span></a></li>
+                      </ul>
+                    </nav>
+                        
+                    </ul>
+                </div>
+                
+                
+            </div>
+        </div>
+  </header>
+
+</body>

@@ -1,0 +1,54 @@
+<head>
+    <link rel="stylesheet" href="assets/stylesheets/administrator/home.sass">
+</head>
+
+<body>
+    
+    <div class="container-fluid"> 
+        <div class="row"> 
+            <div class="body-wrapper">
+                <div class="col-md-3">
+                    <div class="panel">
+                    <div class="aside" width="300px">
+                        <div class="avatar"><img src="https://66.media.tumblr.com/avatar_faa95867d2b3_128.png" /></div>
+                        <div class="seperator"></div>
+                        <div class="list">
+                            <a href="https://ror-harrisneo.c9users.io/administrators/home"><div class="item">GENERAL</div> <hr />
+                            <a href="https://ror-harrisneo.c9users.io/products/new"><div class="item">ADD PRODUCT</div>
+                            <a href="https://ror-harrisneo.c9users.io/brands/new"><div class="item">ADD BRAND</div></a>
+                            <a href="https://ror-harrisneo.c9users.io/departments/new"><div class="item">ADD DEPARTMENT</div></a>
+                            <a href="https://ror-harrisneo.c9users.io/sub_departments/new"><div class="item">ADD SUBDEPARTMENT</div> </a>
+                            
+                            <a href="https://ror-harrisneo.c9users.io/products/manage"><div class="item">EDIT PRODUCT</div></a>
+                            <a href="https://ror-harrisneo.c9users.io/brands/manage"><div class="item">EDIT BRAND</div></a>
+                            <a href="https://ror-harrisneo.c9users.io/departments/manage"><div class="item">EDIT DEPARTMENT</div></a>
+                            <a href="https://ror-harrisneo.c9users.io/sub_departments/manage"><div class="item">EDIT SUBDEPARTMENT</div> </a>
+                            
+                        </div>
+                    </div>
+                </div>
+               
+                </div>
+                <div class="col-md-9">
+                  
+                <%= line_chart [ {name: "Products", data: Product.group_by_day(:created_at).count}],
+                 :id => "stats", :library => {hAxis: {title: "Time"}, vAxis: {title: "Product Creation"}, title: "Times of creation of objects"}%> 
+                 
+                 <%= line_chart Product.group_by_day(:created_at).count %>
+                 
+                 <%= column_chart Product.group_by_day_of_week(:created_at, format: "%a").count %>
+                 
+                 Column Chart for Orders
+                 <%= column_chart Order.group_by_day(:created_at).count %>
+                 
+                 Area Chart for Orders
+                 <%= area_chart Order.group_by_day(:created_at).count %>
+
+                 Area Chart for LineItem
+                 <%= area_chart LineItem.group_by_day(:created_at).count %>
+                 
+                 </div>
+            </div>
+        </div>
+    </div>
+</body>

@@ -1,0 +1,20 @@
+<% provide(:title, 'Add Sub Departments') %>
+
+<%=form_for @subdepartment do |form|%>
+
+
+    <div class = "field">
+        <%=form.label :Name%>
+        <%=form.text_field :name%>
+    </div>
+    
+    <div class = "field">
+        <%=form.label :Department%>
+        <%=form.select :department_id, Department.all.map{|department|[department.name]}%>
+    </div>
+    
+    <div class = "action">
+        <%=form.submit "Add Sub department"%>
+    </div>
+    
+<%end%>

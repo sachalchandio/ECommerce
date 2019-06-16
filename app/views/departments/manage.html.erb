@@ -1,0 +1,45 @@
+<% provide(:title, 'Sub Departments') %>
+
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
+</head>
+<body>
+
+<div class="container">
+  
+    <div class="row">
+<%= will_paginate %>
+        <div class="row">
+     <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>Brand Name</th>
+            <th>Show Action</th>
+            <th>Edit Action</th>
+            <th>Destroy Action</th>
+          </tr>
+        </thead>
+        <tbody>
+            <%@departments.each do |x|%>
+          <tr>
+            <td><%= x.name%></td>
+            <td><%= link_to 'Show', x%></td>
+            <td> <%= link_to 'Edit', edit_department_path(x)%></td>
+            <td><%= link_to "Destroy",x ,method:  :delete, data: {confirm: "Are you sure?"}%></td>
+          </tr>
+          <%end%>
+        </tbody>
+      </table>
+    </div>      
+    <%= will_paginate %>
+</div>
+
+</body>
+</html>
+

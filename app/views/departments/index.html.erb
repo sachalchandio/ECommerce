@@ -1,0 +1,39 @@
+<% provide(:title, 'Departments') %>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
+</head>
+<body>
+
+<div class="container">
+         
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Department Name</th>
+        <th>Show</th>
+        <th>Edit</th>
+        <th>Destroy</th>
+      </tr>
+    </thead>
+    <tbody>
+        <%@departments.each do |department|%>
+      <tr>
+        <td><%= department.name%></td>
+        <td><%= link_to 'Show', department%></td>
+        <td> <%= link_to 'Edit',edit_department_path(department)%></td>
+        <td><%= link_to "Destroy",department,method:  :delete, data: {confirm: "Are you sure?"}%></td>
+      </tr>
+      <%end%>
+     
+    </tbody>
+  </table>
+</div>
+
+</body>
+</html>

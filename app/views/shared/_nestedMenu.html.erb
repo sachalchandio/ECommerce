@@ -1,0 +1,80 @@
+
+<html>
+    <head>
+        <link rel="stylesheet" type="text/css" href="slimmenu.css">
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+
+    
+    </head>
+    
+    <body>    
+        <ul class="slimmenu">
+            <li> <a href="#">Slim Menu 1</a>
+            <ul>
+                <li> <a href="#">Slim Menu 1.1</a>
+                <ul>
+                    <li><a href="#">Slim Menu 1.1.1</a></li>
+                    <li> <a href="#">Slim Menu 1.1.2</a>
+                    <ul>
+                        <li><a href="#">Slim Menu 1.1.2.1</a></li>
+                        <li><a href="#">Slim Menu 1.1.2.2</a></li>
+                    </ul>
+                    </li>
+                </ul>
+                </li>
+                    <li><a href="#">Slim Menu 1.2</a></li>
+            </ul>
+        </li>
+            <li><a href="#">Slim Menu 2</a></li>
+            <li> <a href="#">Slim Menu 3</a>
+            <ul>
+                <li> <a href="#">Slim Menu 3.1</a>
+                <ul>
+                    <li><a href="#">Slim Menu 3.1.1</a></li>
+                    <li><a href="#">Slim Menu 3.1.2</a></li>
+                </ul>
+                </li>
+                <li><a href="#">Slim Menu 3.2</a></li>
+            </ul>
+        </li>
+            <li><a href="#">Slim Menu 4</a></li>
+        </ul>
+        
+        <script> 
+            $('ul.slimmenu').slimmenu(
+                {
+                    /* <a href="https://www.jqueryscript.net/tags.php?/Navigation/">Navigation</a> menu will be collapsed when document width is below this size or equal to it. */
+                    resizeWidth: '800', 
+                    
+                    /* Make main navigation menu initially visible on mobile devices without the need to click on expand/collapse icon. */
+                    initiallyVisible: false,
+                    
+                    /* Collapsed menu title. */
+                    collapserTitle: 'Main Menu', 
+                    
+                    /* Speed of the submenu expand and collapse animation. */
+                    animSpeed: 'medium', 
+                    
+                    /* Easing effect that will be used when expanding and collapsing menu and submenus. */
+                    easingEffect: null, 
+                    
+                    /* Indentation option for the responsive collapsed submenus. 
+                       If set to true, all submenus will be indented with the value of the option below. 
+                    */
+                    indentChildren: false, 
+                    
+                    /* Responsive submenus will be indented with this character according to their level. */
+                    childrenIndenter: '&nbsp;',
+                    
+                    /* An icon to be displayed next to parent menu of collapsed sub menus. */
+                    expandIcon: '<i>&#9660;</i>',
+                    
+                    /* An icon to be displayed next to parent menu of expanded sub menus. */
+                    collapseIcon: '<i>&#9650;</i>'
+                });
+        
+        </script>
+        
+    </body>    
+    
+</html>

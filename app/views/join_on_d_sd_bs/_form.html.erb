@@ -1,0 +1,14 @@
+
+<%= simple_form_for(@join_on_d_sd_b) do |f| %>
+  <%= f.error_notification %>
+  <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
+
+
+  
+  
+    <%=f.label :brand %>
+    <%=f.collection_select :brand_id, Brand.order(:name), :name, :name %>
+    <%= f.association :sub_department, :collection => @subdept, :as => :check_boxes %>
+    <%= f.button :submit %>
+  
+<% end %>

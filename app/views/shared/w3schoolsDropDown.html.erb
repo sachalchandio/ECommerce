@@ -1,0 +1,50 @@
+https://www.w3schools.com/bootstrap/tryit.asp?filename=trybs_ref_js_dropdown_multilevel_css&stacked=h
+
+<div class="dropdown">
+                        <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown">Departments
+                        <span class="caret"></span></button>
+                        <ul class="dropdown-menu">
+                        	<% iAmTooFuckingShit.each do |department| %>		
+                              <li class="dropdown-submenu">
+                                <a class="test" tabindex="-1" href="#"><%=department.name%></a><span class="caret"></span></a>
+                                <ul class="dropdown-menu">
+                                	<% get_all_subdepartments_by_name(department.name).each do |subDept| %>		
+                                	  <li><a tabindex="-1" href="#"><%=subDept%></a></li>
+                                     <%end%>
+                                </ul>
+                              </li>
+                        </ul><%end%>
+                    </div>
+                    
+                    
+                    
+                    
+                    
+                    <div class="col-md-3">
+                  <%= link_to "Reezay ", root_path, id: "logo" %>
+                  <ul class="nav navbar-nav">
+                    <div class="dropdownDepartments">
+                        <div class="container">
+                          <div class="dropdown">
+                            <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown">Departments
+                            <span class="caret"></span></button>
+                            <% iAmTooFuckingShit.each do |department| %>
+                            <ul class="dropdown-menu">
+                                <li><a tabindex="-1" href="#">2nd level dropdown</a></li>
+                              <li class="dropdown-submenu">
+                                <a class="test" href="#"><%=department.name%><<span class="caret"></span></a>
+                                <% get_all_subdepartments_by_name(department.name).each do |subDept| %>		
+                                <ul class="dropdown-menu">
+                                    <li><a tabindex="-1" href="#">3rd level dropdown</a></li>
+                                  <li class="dropdown-submenu">
+                                    <a class="test" href="#"><%=subDept%> <span class="caret"></span></a>
+                                    <%end%>
+                                    </ul>
+                                  </li> 
+                                <%end%></ul> 
+                              </li> 
+                            </ul>
+                          </div>
+                        </div> 
+                    </div>
+                 </div>

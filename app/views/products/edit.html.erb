@@ -1,0 +1,84 @@
+  <%= form_for @product, html: { multipart: true } do |f| %>
+        
+      <!-- Name of the product -->
+        <div class = "field">
+        <%= f.label :name %>
+        <%= f.text_field :name %>
+        </div>
+        
+        <div class = "field">
+        <%= f.label :Display_Name %>
+        <%= f.text_field :display_name %>
+        </div>
+        
+          
+        <div class = "field">
+          <%=f.label :brand %>
+          <%=f.collection_select :brand, Brand.order(:name), :name, :name %>
+        </div>
+    
+          
+        <div class = "field">
+          <%=f.label :Department%>
+          <%=f.collection_select :department, Department.order(:name), :name, :name %>
+        </div>
+        
+        
+        <div class = "field">
+          <%=f.label :Sub_Department%>
+          <%=f.grouped_collection_select :sub_department, Department.order(:name), :sub_departments, :name, :name, :name %>
+        </div>
+  
+        
+        <!-- Add description of product-->
+        <div class = "field">
+          <%=f.label :description%>
+          <%=f.text_area :description,  cols: "15", rows: "4"  %>
+  
+          
+        </div>
+      <!-- Price of the product -->  
+        <div class = "field">
+        <%=f.label :price%> 
+        <%=f.text_field :price%>
+        </div>
+      <!-- Image of the product -->
+        <div class = "field">
+        <%=f.label :image %>
+        <%=f.file_field :image%>
+        </div>
+      <!-- Submit button to add product -->
+        <div class ="actions">
+        <%= f.submit :"Add Product", class: "btn btn-primary" %>
+        </div>    
+        
+      <% end %>
+
+
+ <script>
+    $(document).ready(function(){
+      var sub_departments;
+      sub_departments = $('#product_sub_department').html();
+      sub_departments=sub_departments.replace(/[!@#$%^&*;,']/g , "");
+      sub_departments=sub_departments.replace(/amp/g , "");
+      console.log((sub_departments),"Subdepartment");
+      return $('#product_department').change(function() {
+        var department, options;
+        department = $('#product_department :selected').text();
+        department=department.replace(/[!@#$%^&*,;']/g , "");
+        department=department.replace(/amp/g , "");
+        department = "\""+department+"\""; 
+        console.log(department);
+         options = $(sub_departments).filter("optgroup[label="+department+"]").html();
+         
+         console.log(options,"options");
+           if (options) {
+             return $('#product_sub_department').html(options);
+          } else {
+              return $('#product_sub_department').empty();
+            }
+    
+      });
+      
+  });
+  </script>

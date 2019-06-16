@@ -1,0 +1,142 @@
+<html>
+    <%provide(:title,"Home")%>
+    
+    <head>
+      <link rel="stylesheet" href="assets/stylesheets/shared/temporaryDelete.scss">
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.3/jquery.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick.min.js"></script>
+      <link href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick.min.css" rel="stylesheet" />
+      <link href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick-theme.min.css" rel="stylesheet" />
+      
+      <link rel="stylesheet" href="/path/to/bootstrap.min.css">
+      <script src="/path/to/jquery.min.js"></script>
+      <script src="/path/to/bootstrap.min.js"></script>
+      
+      <link rel="stylesheet" type="text/css" href="slimmenu.css">
+      <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+   
+    </head>
+    
+    <body>
+        <div class = "container-fluid" id="mainContainer">
+            <div class="row"  >
+              <div class="col-md-3" id="sideBar">
+                <div class="row">
+                  <section class="brands">
+                   
+                       <h2> Brands </h2>
+                          <%Brand.all.each do |brand|%>
+                    <div class="yoyo">    
+                      <!-- <a href= "https://ror-harrisneo.c9users.io/brands/<%#=brand.name%>">-->
+                         <a href= "https://ror-harrisneo.c9users.io/brands/<%=brand.id%>">
+                        <span class="text"><%=brand.name%></span>
+                        <span class="line -right"></span>
+                        <span class="line -top"></span>
+                        <span class="line -left"></span>
+                        <span class="line -bottom"></span> </a>
+                    </div>    
+                      
+                          <%end%>
+                    
+                  </section>
+                </div>
+              </div>
+                
+              <div class="col-md-9" id="contentColumn">
+                <div class="row">
+                  <div class="belowNavBar">
+                     <div class="main">
+                        <div class="slider slider-for">
+                          
+                         <% Product.last(10).each do |p| %>
+                              <div class="nameTag"><h3><%=p.name%></h3></div>
+                              <%end%> 
+                         
+                              
+                        </div>
+                        <div class="slider slider-nav">
+                             <% Product.last(10).each do |p| %>
+                              <a class="imageLinks" href="https://ror-harrisneo.c9users.io/products/<%=p.id%>"><div><h3><img src="<%=p.image%>" alt="Img" class="product-grid__img" /></h3></div></a>
+                               <%end%> 
+                          </div>     
+                        
+                      </div>
+                     </div>
+                     
+                     <div class="belowNavBar">
+                     <div class="main">
+                        <div class="slider slider-for">
+                          
+                          <% Product.where(sub_department_id:7).limit(10).each do |p| %>
+                              <div class="nameTag"><h3><%=p.name%></h3></div>
+                              <%end%> 
+                         
+                              
+                        </div>
+                        <div class="slider slider-nav">
+                          <% Product.where(sub_department_id:7).limit(10).each do |p| %>
+                               <a class="imageLinks" href="https://ror-harrisneo.c9users.io/products/<%=p.id%>"><div><h3><img src="<%=p.image%>" alt="Img" class="product-grid__img" /></h3></div></a>
+                               <%end%> 
+                          </div>     
+                        
+                      </div>
+                     </div>
+                     
+                      <div class="belowNavBar">
+                     <div class="main">
+                        <div class="slider slider-for">
+                          
+                          <% Product.where(sub_department_id:7).limit(10).each do |p| %>
+                              <div class="nameTag"><h3><%=p.name%></h3></div>
+                              <%end%> 
+                         
+                              
+                        </div>
+                        <div class="slider slider-nav">
+                          <% Product.where(sub_department_id:7).limit(10).each do |p| %>
+                               <a class="imageLinks" href="https://ror-harrisneo.c9users.io/products/<%=p.id%>"><div><h3><img src="<%=p.image%>" alt="Img" class="product-grid__img" /></h3></div></a>
+                               <%end%> 
+                          </div>     
+                        
+                      </div>
+                     </div>
+                     
+                     </div>
+                     
+                    </div>
+                  </div>
+            </div>  
+          </div>
+            
+        </div>
+        
+        <script>
+      
+        
+         $('.slider-for').slick({
+              slidesToShow: 1,
+              slidesToScroll: 1,
+              arrows: false,
+              fade: true,
+              asNavFor: '.slider-nav'
+            });
+            
+            $('.slider-nav').slick({
+              slidesToShow: 3,
+              slidesToScroll: 7,
+              asNavFor: '.slider-for',
+              dots: false,
+              centerMode: true,
+              focusOnSelect: true,
+              autoplay:true,
+              draggable:true,
+              lazyLoad: 'ondemand',
+              swipeToSlide : true
+              
+            });
+            		
+            
+        </script>
+
+    </body>
+</html>

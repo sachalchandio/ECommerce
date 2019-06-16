@@ -1,0 +1,27 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Controlles</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Departments subdepartments brands</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @controlles.each do |controlle| %>
+      <tr>
+        <td><%= controlle.departments_subdepartments_brands %></td>
+        <td><%= link_to 'Show', controlle %></td>
+        <td><%= link_to 'Edit', edit_controlle_path(controlle) %></td>
+        <td><%= link_to 'Destroy', controlle, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Controlle', new_controlle_path %>

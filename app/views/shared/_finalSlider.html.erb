@@ -1,0 +1,65 @@
+<html>
+    <%provide(:title,"Home")%>
+    
+    <head>
+      <link rel="stylesheet" href="assets/stylesheets/shared/temporaryDelete.scss">
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.3/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick.min.js"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick.min.css" rel="stylesheet" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick-theme.min.css" rel="stylesheet" />
+      
+    </head>
+    
+    <body>
+        
+        <h1 id="app"> {{ meint tou abdul bari hun mein tou acha bacha hun }}</h1>
+        
+        <div class="belowNavBar">
+         
+            <div class="main">
+                  <div class="slider slider-for">
+                    <div><%= image_tag "Galaxy_S9.1.jpg",:size => "260x180"%> </div>
+                    <div><%= image_tag "Galaxy_S9.1.jpg",:size => "260x180"%> </div>
+                    <div><h3>c</h3></div>
+                    <div><h3>d</h3></div>
+                    <div><h3>e</h3></div>
+                  </div>
+                  <div class="slider slider-nav">
+                    <div><h3>1</h3></div>
+                    <div><h3>2</h3></div>
+                    <div><h3>3</h3></div>
+                    <div><h3>4</h3></div>
+                    <div><h3>5</h3></div>
+                  </div>
+                  <div class="action">
+                    <a href="#" data-slide="3">go to slide 3</a>
+                    <a href="#" data-slide="4">go to slide 4</a>
+                    <a href="#" data-slide="5">go to slide 5</a>
+                  </div>
+              </div>
+        </div>
+        
+        <script>
+        
+        $('.slider-for').slick({
+           slidesToShow: 1,
+           slidesToScroll: 1,
+           arrows: false,
+           fade: true,
+           asNavFor: '.slider-nav'
+         });
+         $('.slider-nav').slick({
+           slidesToShow: 3,
+           slidesToScroll: 1,
+           asNavFor: '.slider-for',
+           dots: true,
+           focusOnSelect: true
+         });
+        
+        </script>
+
+                
+        </script>
+
+    </body>
+</html>

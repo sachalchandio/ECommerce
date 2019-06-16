@@ -1,0 +1,63 @@
+<% provide(:title, 'Sub Departments') %>
+
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
+</head>
+<body>
+
+<div class="container">
+  
+    <div class="row">
+    
+      <div class="row">
+        <div class="col-md-3">
+                <%= form_tag("/products/manage", method: :get) do %> 
+                <%= text_field_tag :search, nil, placeholder: 'Search product', class: 'form-control', size: 20 %>
+                <%= submit_tag "Search", class: "btn btn-primary", id: 'search_button' %>
+                <%end%>
+           
+            </div>
+            
+          <div class="col-md-5">
+              
+            </div>
+            
+            <div class="col-md-4">
+                
+                
+            </div>
+        </div>
+        <%= will_paginate %>
+     <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>Product Name</th>
+            <th>Show Action</th>
+            <th>Edit Action</th>
+            <th>Destroy Action</th>
+          </tr>
+        </thead>
+        <tbody>
+            <%@products.each do |x|%>
+          <tr>
+            <td><%= x.name%></td>
+            <td><%= link_to 'Show', x%></td>
+            <td> <%= link_to 'Edit', edit_product_path(x)%></td>
+            <td><%= link_to "Destroy",x ,method:  :delete, data: {confirm: "Are you sure?"}%></td>
+          </tr>
+          <%end%>
+        </tbody>
+      </table>
+    </div>      
+    <%= will_paginate %>
+</div>
+
+</body>
+</html>
+

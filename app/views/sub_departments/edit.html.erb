@@ -1,0 +1,36 @@
+<%=provide(:title, 'Edit Sub Department') %>
+<%=form_for @subdepartment do |form|%>
+    
+        <% if @subdepartment.errors.any?%>
+        <div  id="error_explanation">
+            <div class="alert alert-danger">
+            <h2><%= pluralize(@subdepartment.errors.count, "error") %> prohibited this cart from being saved:</h2>
+            </div>
+            
+            <ul>
+                <% @subdepartment.errors.full_messages.each do |message| %>
+                <li><%= message %></li>
+                <% end %>
+            </ul>
+        </div>
+        <%end%>
+    
+    
+
+
+    <div class = "field">
+        <%=form.label :Name%>
+        <%=form.text_field :name%>
+    </div>
+    
+    <div class = "field">
+        <%=form.label :Department%>
+        <%=form.select :department_id, Department.all.map{|department|[department.name]}%>
+    </div>
+    
+    <div class = "action">
+        <%=form.submit "Save Changes"%>
+    </div>
+
+    
+<%end%>

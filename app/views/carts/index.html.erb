@@ -1,0 +1,65 @@
+<% provide(:title, 'Sub Departments') %>
+
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
+</head>
+<body>
+
+<div class="container">
+  <% if current_user.is_admin %>
+    <div class="row">
+        <div class="col-md-3">
+                <%= form_tag("/sub_departments/", method: :get) do %> 
+                <%= text_field_tag :search, nil, placeholder: 'Search product', class: 'form-control', size: 20 %>
+                <%= submit_tag "Search", class: "btn btn-primary", id: 'search_button' %>
+                <%end%>
+            </div>
+            
+          <div class="col-md-5">
+              
+            </div>
+            
+            <div class="col-md-4">
+                
+                
+            </div>
+        </div>
+        <div class="row">
+     <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>Cart ID</th>
+            <th>Show Action</th>
+            <th>Edit Action</th>
+            <th>Destroy Action</th>
+          </tr>
+        </thead>
+        <tbody>
+            <%@carts.each do |cart|%>
+          <tr>
+            <td><%= cart.id%></td>
+            <td><%= link_to 'Show', cart%></td>
+            <td> <%= link_to 'Edit', edit_cart_path(cart)%></td>
+            <td><%= link_to "Destroy",  cart, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          </tr>
+          <%end%>
+         
+        </tbody>
+      </table>
+       <%= link_to 'New Cart', new_cart_path, class: "btn btn-primary"  %>
+    </div> 
+    <%else%>
+      <%= render cart_path(@set_cart) %>
+    
+    <%end%>
+</div>
+
+</body>
+</html>
+
