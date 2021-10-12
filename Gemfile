@@ -41,7 +41,7 @@ gem 'font-awesome-rails'
 
 gem 'paypal-recurring'
 # Use Puma as the app server
-gem 'puma', '~> 3.7'
+gem 'puma', '~> 5.5'
 
 gem 'jquery-rails'
 
